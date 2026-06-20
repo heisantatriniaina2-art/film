@@ -10,4 +10,8 @@ public enum TypeAbonnement{
     TypeAbonnement(int prix){
         this.prix = prix;
     }
+
+    public double getPrix() {
+        return this.prix;
+    }
 }
