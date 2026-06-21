@@ -1,23 +1,17 @@
 package PresentationFilms;
+import PresentationFilms.TypeAbonnement;
 
 public class Abonnement {
-    private int idAbonnement;
-    private TypeAbonnement typeAbonnement;
+    private double prix;
 
-    public Abonnement(int idAbonnement, TypeAbonnement typeAbonnement) {
-        this.idAbonnement = idAbonnement;
-        this.typeAbonnement = typeAbonnement;
-    }
+    public Abonnement(int idAbonnement, TypeAbonnement type) {
 
-    public int getIdAbonnement() {
-        return idAbonnement;
-    }
-
-    public TypeAbonnement getTypeAbonnement() {
-        return typeAbonnement;
+        if (type == TypeAbonnement.PREMIUM) this.prix = 15.0;
+        else if (type == TypeAbonnement.VIP) this.prix = 15.0;
+        else this.prix = 0.0;
     }
 
     public double getPrix() {
-        return typeAbonnement.getPrix();
+        return this.prix;
     }
 }

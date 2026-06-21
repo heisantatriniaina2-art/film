@@ -1,17 +1,13 @@
 package PresentationFilms;
 
 public enum TypeAbonnement{
-    STANDARD(10000),
-    PREMIUM(20000),
-    VIP(30000);
-
-    private final int prix;
-
-    TypeAbonnement(int prix){
-        this.prix = prix;
-    }
+    STANDARD, PREMIUM,VIP;
 
     public double getPrix() {
-        return this.prix;
+        return switch (this) {
+            case VIP -> 20.0;
+            case PREMIUM -> 10.0;
+            case STANDARD -> 5.0;
+        };
     }
 }
