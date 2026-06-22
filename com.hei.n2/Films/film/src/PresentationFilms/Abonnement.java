@@ -1,17 +1,13 @@
 package PresentationFilms;
 import PresentationFilms.TypeAbonnement;
-
 public class Abonnement {
-    private double prix;
+    private TypeAbonnement type; // Gardez le type
 
     public Abonnement(int idAbonnement, TypeAbonnement type) {
-
-        if (type == TypeAbonnement.PREMIUM) this.prix = 15.0;
-        else if (type == TypeAbonnement.VIP) this.prix = 15.0;
-        else this.prix = 0.0;
+        this.type = type;
     }
 
     public double getPrix() {
-        return this.prix;
+        return this.type.getPrix(); // Utilise directement la méthode de l'enum
     }
 }
