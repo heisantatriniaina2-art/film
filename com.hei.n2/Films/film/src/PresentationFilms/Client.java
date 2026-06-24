@@ -2,10 +2,12 @@
 package PresentationFilms;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Utilisateur {
     public Abonnement abonnement;
+    private List<Contenu> historique = new ArrayList<>();
 
     public Client(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String email, LocalDate dateNaissance){
         super(idUtilisateur,nomUtilisateur, prenomUtilisateur, email, dateNaissance);
@@ -22,6 +24,11 @@ public class Client extends Utilisateur {
     public void regarder(Contenu media) {
         System.out.println(getNomUtilisateur() + " regarde le média : " + media.getTitre());
         media.incrementePopularite();
+        historique.add(media);
+    }
+
+    public List<Contenu> voirHistorique() {
+        return historique;
     }
 
     public List<Film> chercherFilms(List<Film> tousFilms, String titreRecherche) {
@@ -47,6 +54,4 @@ public class Client extends Utilisateur {
 
         return resultats;
     }
-
-
 }

@@ -55,4 +55,19 @@ public class ClientTest {
         assertEquals(2, filmsAction.size());
     }
 
+    @Test
+    void testVoirHistorique() {
+        var client = new Client(7, "Ramaro", "Hasina", "hasina@gmail.com", LocalDate.of(2000, 3, 9));
+
+        var film = new Film(23333, GenreFilm.ACTION, "Fast & Furious 7", 79, LocalTime.of(1, 30));
+        var serie = new Serie(4444, GenreFilm.DRAME, "Breaking Bad", 99, 62, 5, LocalTime.of(0, 25));
+
+        assertTrue(client.voirHistorique().isEmpty());
+
+        client.regarder(film);
+        client.regarder(serie);
+
+        assertEquals(List.of(film, serie), client.voirHistorique());
+    }
+
 }

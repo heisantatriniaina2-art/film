@@ -1,7 +1,9 @@
 package PresentationFilms;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Administrateur extends Utilisateur{
     public Administrateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String email, LocalDate dateNaissance){
@@ -22,6 +24,13 @@ public class Administrateur extends Utilisateur{
             }
         }
         return totalRevenus;
+    }
+
+    public List<Client> voirAbonneParType(List<Client> listeCLients, TypeAbonnement type) {
+        return listeCLients.stream()
+                .filter(c -> c.getAbonnement() != null)
+                .filter(c -> c.getAbonnement().getPrix() == type.getPrix())
+                .collect(Collectors.toList());
     }
 }
 
