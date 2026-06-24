@@ -6,7 +6,7 @@ public abstract class Contenu {
     private int idContenu;
     private GenreFilm genreFilm;
     private String titre;
-    private int popularite;
+    private long popularite;
 
     public Contenu(int idContenu, GenreFilm genreFilm, String titre, int popularite) {
         this.idContenu = idContenu;
@@ -27,7 +27,7 @@ public abstract class Contenu {
         return titre;
     }
 
-    public int getPopularite() {
+    public long getPopularite() {
         return popularite;
     }
 

@@ -9,5 +9,4 @@ public class Film extends Contenu{
         super(idContenu, genreFilm, titre, popularite);
         this.duree = duree;
     }
-
 }

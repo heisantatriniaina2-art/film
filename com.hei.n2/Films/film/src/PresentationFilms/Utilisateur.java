@@ -17,6 +17,10 @@ public abstract class Utilisateur {
         this.dateNaissance = dateNaissance;
     }
 
+    public int getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
     public String getNomUtilisateur() {
         return nomUtilisateur;
     }
