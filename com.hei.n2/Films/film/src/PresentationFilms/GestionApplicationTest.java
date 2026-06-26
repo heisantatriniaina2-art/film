@@ -12,7 +12,7 @@ public class GestionApplicationTest {
     void testGestionFavorisEtHistorique() {
         var client = new Client(10, "Rabesolo", "Marie", "marie@gmail.com", LocalDate.of(2000, 3, 9));
         Film film = new Film(101, GenreFilm.ACTION, "Transporteur", 85, LocalTime.of(2, 28));
-        Serie serie = new Serie(202, GenreFilm.ROMANCE, "L'été où je suis devenue jolie", 95, LocalTime.of(0, 45));
+        Serie serie = new Serie(202, GenreFilm.ROMANCE, "L'été où je suis devenue jolie", 95, 62, 5, LocalTime.of(0, 45));
         assertTrue(client.getFavoris().isEmpty(), "Les favoris devraient être vides au début");
         client.ajouterAuxFavoris(film);
         client.ajouterAuxFavoris(serie);
