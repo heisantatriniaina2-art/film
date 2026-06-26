@@ -38,8 +38,6 @@ public class AdministrateurTest {
         listeClient.add(client2);
 
         double revenus = admin.consulterRevenus(listeClient);
-
-        // Si vos abonnements PREMIUM et VIP totalisent 30.0, le test passera
-        assertEquals(30.0, revenus, 0.001);
+        assertEquals(30.0, revenus);
     }
 }

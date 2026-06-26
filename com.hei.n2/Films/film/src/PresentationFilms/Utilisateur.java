@@ -17,6 +17,9 @@ public abstract class Utilisateur {
         this.dateNaissance = dateNaissance;
     }
 
+    public boolean estMajeur() {
+        return this.dateNaissance.plusYears(18).isBefore(LocalDate.now());
+    }
 
     public int getIdUtilisateur() {
         return idUtilisateur;
@@ -30,6 +33,9 @@ public abstract class Utilisateur {
         return prenomUtilisateur;
     }
 
+    public boolean aUnEmailValide() {
+        return this.email != null && this.email.contains("@") && this.email.contains(".");
+    }
     public String getEmail() {
         return email;
     }
@@ -52,6 +58,10 @@ public abstract class Utilisateur {
 
     public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+    @Override
+    public String toString() {
+        return "Utilisateur : " + prenomUtilisateur + " " + nomUtilisateur + " (" + email + ")";
     }
 
     public void regarder(Serie serie) {
