@@ -24,8 +24,8 @@ public class AdministrateurTest {
     void testConsulterRevenus(){
         var admin = new Administrateur(1, "Rakoto", "Paul", "rakoto@gmail.com", LocalDate.of(1996, 2, 6));
 
-        var abonnement1 = new Abonnement(2899, TypeAbonnement.PREMIUM);
-        var abonnement2 = new Abonnement(2898, TypeAbonnement.VIP);
+        var abonnement1 = new Abonnement(2899,10.0, TypeAbonnement.PREMIUM);
+        var abonnement2 = new Abonnement(2898,20.0, TypeAbonnement.VIP);
 
         var client1 = new Client(2, "Randria", "Miary", "miary@gmail.com", LocalDate.of(1999, 4, 6));
         var client2 = new Client(3, "Rahary", "Tiana", "rahary@gmail.com", LocalDate.of(2001, 5, 8));

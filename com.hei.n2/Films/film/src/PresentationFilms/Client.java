@@ -21,12 +21,6 @@ public class Client extends Utilisateur {
         return abonnement;
     }
 
-    public void regarder(Contenu media) {
-        System.out.println(getNomUtilisateur() + " regarde le média : " + media.getTitre());
-        media.incrementePopularite();
-        historique.add(media);
-    }
-
     public List<Contenu> voirHistorique() {
         return historique;
     }
@@ -54,4 +48,25 @@ public class Client extends Utilisateur {
 
         return resultats;
     }
+    private java.util.List<Contenu> favoris = new java.util.ArrayList<>();
+    private java.util.List<Contenu> historiqueVisionnage = new java.util.ArrayList<>();
+
+    public void ajouterAuxFavoris(Contenu contenu) {
+        if (!favoris.contains(contenu)) {
+            favoris.add(contenu);
+        }
+    }
+
+    public void retirerDesFavoris(Contenu contenu) {
+        favoris.remove(contenu);
+    }
+
+    public void regarder(Contenu contenu) {
+        historiqueVisionnage.add(contenu);
+        contenu.setPopularite(contenu.getPopularite() + 1);
+        System.out.println(getNomUtilisateur() + " regarde actuellement : " + contenu.getTitre());
+    }
+
+    public java.util.List<Contenu> getFavoris() { return favoris; }
+    public java.util.List<Contenu> getHistoriqueVisionnage() { return historiqueVisionnage; }
 }

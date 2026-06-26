@@ -53,4 +53,8 @@ public abstract class Utilisateur {
     public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
+
+    public void regarder(Serie serie) {
+
+    }
 }

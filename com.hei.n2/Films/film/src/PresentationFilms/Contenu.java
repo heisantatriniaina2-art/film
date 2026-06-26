@@ -44,5 +44,29 @@ public abstract class Contenu {
     public String toString() {
         return "Titre: " + this.titre + " | Genre: " + this.genreFilm + " | Popularité: " + this.popularite;
     }
+    private java.util.List<Avis> listeAvis = new java.util.ArrayList<>();
+
+    public void ajouterAvis(Avis avis) {
+        this.listeAvis.add(avis);
+    }
+
+    public double getNoteMoyenne() {
+        if (listeAvis.isEmpty()) {
+            return 0.0;
+        }
+        double somme = 0;
+        for (Avis avis : listeAvis) {
+            somme += avis.getNote();
+        }
+        return somme / listeAvis.size();
+    }
+
+    public java.util.List<Avis> getListeAvis() {
+        return listeAvis;
+    }
+
+    public void setPopularite(long popularite) {
+        this.popularite = popularite;
+    }
 }
 
