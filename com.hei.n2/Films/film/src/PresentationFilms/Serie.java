@@ -15,4 +15,28 @@ public class Serie extends Contenu {
       this.nombreSaison = nombreSaison;
       this.dureeEpisode = dureeEpisode;
   }
+
+    public int getNombreSaison() {
+        return nombreSaison;
+    }
+
+    public int getNombreEpisode() {
+        return nombreEpisode;
+    }
+
+    public LocalTime getDureeEpisode() {
+        return dureeEpisode;
+    }
+
+    public void setNombreSaison(int nombreSaison) {
+        this.nombreSaison = nombreSaison;
+    }
+
+    public void setNombreEpisode(int nombreEpisode) {
+        this.nombreEpisode = nombreEpisode;
+    }
+
+    public void setDureeEpisode(LocalTime dureeEpisode) {
+        this.dureeEpisode = dureeEpisode;
+    }
 }
