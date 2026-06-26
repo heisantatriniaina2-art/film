@@ -49,6 +49,17 @@ class Abonnement {
     + double getPrix()
 }
 
+class Avis {
+    - String nomUtilisateur
+    - int note
+    - String commentaire
+
+    + Avis(String, int, String)
+    + int getNote()
+    + String getNomUtilisateur()
+    + String getCommentaire()
+}
+
 enum TypeAbonnement {
     STANDARD, PREMIUM, VIP
     + double getPrix()
