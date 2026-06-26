@@ -61,7 +61,7 @@ public class ClientTest {
         var client = new Client(7, "Ramaro", "Hasina", "hasina@gmail.com", LocalDate.of(2000, 3, 9));
 
         var film = new Film(23333, GenreFilm.ACTION, "Fast & Furious 7", 79, LocalTime.of(1, 30));
-        var serie = new Serie(4444, GenreFilm.DRAME, "Breaking Bad", 99,  LocalTime.of(0, 25));
+        var serie = new Serie(4444, GenreFilm.DRAME, "Breaking Bad", 99,  LocalTime.of(1, 25));
 
         assertTrue(client.voirHistorique().isEmpty());
 

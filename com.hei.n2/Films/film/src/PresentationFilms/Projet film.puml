@@ -1,0 +1,66 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Utilisateur {
+    - int idUtilisateur
+    - String nomUtilisateur
+    - String prenomUtilisateur
+    - String email
+    - LocalDate dateNaissance
+    + boolean estMajeur()
+    + boolean aUnEmailValide()
+}
+
+class Administrateur extends Utilisateur {
+    + void consulterTopPopulaires(List<Contenu>)
+    + double consulterRevenus(List<Client>)
+    + List<Client> voirAbonneParType(List<Client>, TypeAbonnement)
+}
+
+class Client extends Utilisateur {
+    + void setAbonnement(Abonnement)
+    + Abonnement getAbonnement()
+    + void regarder(Contenu)
+    + List<Contenu> voirHistorique()
+}
+
+class Contenu {
+    - int idContenu
+    - GenreFilm genreFilm
+    - String titre
+    - long popularite
+    + boolean estDisponible()
+    + void incrementePopularite()
+}
+
+class Film extends Contenu {
+    - LocalTime duree
+}
+
+class Serie extends Contenu {
+    - int nombreSaison
+    - int nombreEpisode
+    - LocalTime dureeEpisode
+}
+
+class Abonnement {
+    - double prix
+    - int idAbonnement
+    + double getPrix()
+}
+
+enum TypeAbonnement {
+    STANDARD, PREMIUM, VIP
+    + double getPrix()
+}
+
+enum GenreFilm {
+    ACTION, ROMANCE, COMEDIE, ...
+}
+
+Client "1" --> "0..1" Abonnement : possède
+Client "1" --> "0..*" Contenu : regarde
+Abonnement ..> TypeAbonnement : utilise
+Contenu o-- GenreFilm : a pour genre
+
+@enduml

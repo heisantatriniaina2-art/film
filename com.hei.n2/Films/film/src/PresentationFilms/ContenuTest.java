@@ -16,4 +16,7 @@ public class ContenuTest {
         var futurFilm = new Film(2, GenreFilm.ACTION, "Prochain Hit", 85, LocalTime.of(1,53 ));
         assertFalse(futurFilm.estDisponible(), "Le film ne devrait pas être disponible");
     }
+
+    @Test
+    void test
 }
