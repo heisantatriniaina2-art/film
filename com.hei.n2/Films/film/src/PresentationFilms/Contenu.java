@@ -15,6 +15,11 @@ public abstract class Contenu {
         this.popularite = popularite;
     }
 
+
+    public boolean estDisponible() {
+        return this.popularite >= 0;
+    }
+
     public int getIdContenu() {
         return idContenu;
     }
@@ -34,4 +39,10 @@ public abstract class Contenu {
     public void incrementePopularite() {
         this.popularite++;
     }
+
+    @Override
+    public String toString() {
+        return "Titre: " + this.titre + " | Genre: " + this.genreFilm + " | Popularité: " + this.popularite;
+    }
 }
+
