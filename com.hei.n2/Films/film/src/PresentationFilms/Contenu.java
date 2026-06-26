@@ -2,7 +2,7 @@ package PresentationFilms;
 
 import java.time.LocalTime;
 
-public abstract class Contenu {
+public class Contenu {
     private int idContenu;
     private GenreFilm genreFilm;
     private String titre;
