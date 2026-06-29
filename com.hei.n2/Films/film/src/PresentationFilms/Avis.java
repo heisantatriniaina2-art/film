@@ -11,7 +11,14 @@ public class Avis {
         this.commentaire = commentaire;
     }
 
-    public int getNote() { return note; }
-    public String getNomUtilisateur() { return nomUtilisateur; }
-    public String getCommentaire() { return commentaire; }
+    public int getNote() {
+        return note;
+     }
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
 }

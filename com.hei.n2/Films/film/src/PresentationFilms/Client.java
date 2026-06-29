@@ -9,6 +9,7 @@ public class Client extends Utilisateur {
     public Abonnement abonnement;
     private List<Contenu> historique = new ArrayList<>();
 
+
     public Client(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur,
                   String email, LocalDate dateNaissance) {
         super(idUtilisateur, nomUtilisateur, prenomUtilisateur, email, dateNaissance);

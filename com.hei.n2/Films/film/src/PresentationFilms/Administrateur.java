@@ -26,6 +26,7 @@ public class Administrateur extends Utilisateur{
         return totalRevenus;
     }
 
+
     public List<Client> voirAbonneParType(List<Client> listeCLients, TypeAbonnement type) {
         return listeCLients.stream()
                 .filter(c -> c.getAbonnement() != null)
