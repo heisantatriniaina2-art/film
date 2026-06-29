@@ -9,7 +9,6 @@ public class Client extends Utilisateur {
     public Abonnement abonnement;
     private List<Contenu> historique = new ArrayList<>();
 
-
     public Client(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur,
                   String email, LocalDate dateNaissance) {
         super(idUtilisateur, nomUtilisateur, prenomUtilisateur, email, dateNaissance);
@@ -68,6 +67,10 @@ public class Client extends Utilisateur {
         System.out.println(getNomUtilisateur() + " regarde actuellement : " + contenu.getTitre());
     }
 
-    public java.util.List<Contenu> getFavoris() { return favoris; }
-    public java.util.List<Contenu> getHistoriqueVisionnage() { return historiqueVisionnage; }
+    public java.util.List<Contenu> getFavoris() {
+        return favoris;
+    }
+    public java.util.List<Contenu> getHistoriqueVisionnage() {
+        return historiqueVisionnage;
+    }
 }

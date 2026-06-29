@@ -16,6 +16,7 @@ public class Serie extends Contenu {
       this.dureeEpisode = dureeEpisode;
   }
 
+
     public int getNombreSaison() {
         return nombreSaison;
     }

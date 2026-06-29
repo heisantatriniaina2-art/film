@@ -2,101 +2,108 @@
 skinparam classAttributeIconSize 0
 
 abstract class Utilisateur {
-    - int idUtilisateur
-    - String nomUtilisateur
-    - String prenomUtilisateur
-    - String email
-    - LocalDate dateNaissance
-    + boolean estMajeur()
-    + boolean aUnEmailValide()
+    - idUtilisateur : int
+    - nomUtilisateur : String
+    - prenomUtilisateur : String
+    - email : String
+    - motDePasse : String
+    - estConnecte : boolean
+    + seConnecter(email : String, mdp : String) : boolean
+    + seDeconnecter() : void
+    + changerMotDePasse(ancien : String, nouveau : String) : boolean
+    + estMajeur() : boolean
+    + aUnEmailValide() : String
 }
 
 class Administrateur extends Utilisateur {
-    + void consulterTopPopulaires(List<Contenu>)
-    + double consulterRevenus(List<Client>)
-    + List<Client> voirAbonneParType(List<Client>, TypeAbonnement)
-    + void ajouterContenu(Contenu contenu)
-    + void supprimerContenu(int idFilm)
+    + consulterTopPopulaires(contenus : List<Contenu>) : void
+    + consulterRevenus(listeClients : List<Client>) : double
+    + voirAbonneParType(listeClients : List<Client>, type : TypeAbonnement) : List<Client>
+    + ajouterContenu(catalogue : List<Contenu>, nouveauContenu : Contenu) : void
+    + supprimerContenu(catalogue : List<Contenu>, id : int) : void
 }
 
-
 class Client extends Utilisateur {
-    + void setAbonnement(Abonnement)
-    + Abonnement getAbonnement()
-    + void regarder(Contenu)
-    + List<Contenu> voirHistorique()
+    - abonnement : Abonnement
+    - historique : List<Contenu>
+    - historiqueVisionnage : List<Contenu>
+    + voirHistorique() : List<Contenu>
+    + chercherFilms(tousFilms : List<Film>, titre : String) : List<Film>
+    + chercherFilmsByGenre(tousFilms : List<Film>, genre : GenreFilm) : List<Film>
+    + ajouterAuxFavoris(contenu : Contenu) : void
+    + retirerDesFavoris(contenu : Contenu) : void
+    + regarder(contenu : Contenu) : void
 }
 
 abstract class Contenu {
-    - int idContenu
-    - GenreFilm genreFilm
-    - String titre
-    - long popularite
-    + boolean estDisponible()
-    + void incrementePopularite()
+       - idContenu : int
+       - genreFilm : GenreFilm
+       - titre : String
+       - popularite : long
+       - listeAvis : List<Avis>
+       - listeFavoris : List<Client>
+       + ajouterAvis(avis : Avis) : void
+       + estDisponible() : boolean
+       + ajouterAuxFavoris(client : Client) : void
+       + incrementePopularite() : void
 }
 
 class Film extends Contenu {
-    - LocalTime duree
-    + LocalTime getDuree
-    + void setDuree
-    +
-}
-
-class Serie extends Contenu {
-    - int nombreSaison
-    - int nombreEpisode
-    - LocalTime dureeEpisode
-    + int getNombreSaison
-    + int getNombreEpisode
-    + LocalTime getDureeEpisode
-    + void setNombreSaison
-    + void setNombreEpisode
-    + void setDureeEpisode
+    - duree : LocalTime
 }
 
 class Abonnement {
-    - double prix
-    - int idAbonnement
-    + double getPrix()
+    - prix : double
+    - idAbonnement : int
+    - typeAbonnement : TypeAbonnement
+    + getPrix() : double
 }
 
-class Avis {
-    - String nomUtilisateur
-    - int note
-    - String commentaire
-
-    + Avis(String, int, String)
-    + int getNote()
-    + String getNomUtilisateur()
-    + String getCommentaire()
+class Serie extends Contenu {
+    - nombreSaisons : int
+    - nombreEpisode : int
+    - dureeEpisode : LocalTime
+    + ajouterEpisode(saison : int, titre : String) : void
+    + getNombreTotalEpisodes() : int
 }
 
 class Paiement {
-   - String idPaiement
-   - double montant
-   - String methodePaiement
-   - String statutPaiement
-   + boolean traiterPaiement()
-   + String getIdPaiement()
-   + double getMontant()
-   +  String getStatutPaiement()
+   - idPaiement : int
+   - montant : double
+   - modePaiement : ModePaiement
+   - statutPaiement : StatutPaiement
+   + traiterPaiement() : boolean
+
+}
+
+class Avis{
+   - nomUtilisateur
+   - note : int
+   - commentaire : String
+}
+
+enum ModePaiement {
+    CB, PAYPAL, APPLE_PAY
+}
+
+enum StatutPaiement {
+    EN_ATTENTE, VALIDE, REFUSE
 }
 
 enum TypeAbonnement {
     STANDARD, PREMIUM, VIP
-    + double getPrix()
 }
 
 enum GenreFilm {
-    ACTION, ROMANCE, COMEDIE, ...
+    ACTION, ROMANCE, COMEDIE
 }
 
 Client "1" --> "0..1" Abonnement : possède
 Client "1" --> "0..*" Contenu : regarde
-Client "1" --> "0..*" Avis : donner
-Client "1" --> "*" Paiement : effectuer
-Abonnement ..> TypeAbonnement : utilise
-Contenu o-- GenreFilm : a pour genre
-
+Client "1" --> "*" Paiement : effectue
+Contenu "1" *-- "0..*" Avis : contient
+Contenu o-- GenreFilm : genre
+Paiement ..> ModePaiement : utilise
+Paiement ..> StatutPaiement : possède
+Abonnement --> TypeAbonnement : utilise
 @enduml

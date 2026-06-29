@@ -26,6 +26,21 @@ public class Administrateur extends Utilisateur{
         return totalRevenus;
     }
 
+    public void ajouterContenu(List<Contenu> catalogue, Contenu nouveauContenu) {
+        if (!catalogue.contains(nouveauContenu)) {
+            catalogue.add(nouveauContenu);
+        }
+    }
+
+    public void supprimerContenu(List<Contenu> catalogue, int idContenu) {
+        boolean supprime = catalogue.removeIf(c -> c.getIdContenu() == idContenu);
+        if (supprime) {
+            System.out.println("Contenu supprimé avec succès.");
+        } else {
+            System.out.println("Contenu non trouvé avec l'ID : " + idContenu);
+        }
+    }
+
 
     public List<Client> voirAbonneParType(List<Client> listeCLients, TypeAbonnement type) {
         return listeCLients.stream()

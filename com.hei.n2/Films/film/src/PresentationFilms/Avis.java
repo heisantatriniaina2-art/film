@@ -2,7 +2,7 @@ package PresentationFilms;
 
 public class Avis {
     private String nomUtilisateur;
-    private int note; // Note sur 5
+    private int note;
     private String commentaire;
 
     public Avis(String nomUtilisateur, int note, String commentaire) {

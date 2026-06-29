@@ -8,6 +8,8 @@ public abstract class Utilisateur {
     private String prenomUtilisateur;
     private String email;
     private LocalDate dateNaissance;
+    private String motDePasse;
+    private boolean estConnecte;
 
     public Utilisateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String email, LocalDate dateNaissance) {
         this.idUtilisateur = idUtilisateur;
@@ -15,6 +17,8 @@ public abstract class Utilisateur {
         this.prenomUtilisateur = prenomUtilisateur;
         this.email = email;
         this.dateNaissance = dateNaissance;
+        this.motDePasse = motDePasse;
+        this.estConnecte = false;
     }
 
     public boolean estMajeur() {
@@ -31,6 +35,31 @@ public abstract class Utilisateur {
 
     public String getPrenomUtilisateur() {
         return prenomUtilisateur;
+    }
+
+    public boolean seConnecter(String email, String motDePasse) {
+        if (this.email.equals(email) && this.motDePasse.equals(motDePasse)) {
+            this.estConnecte = true;
+            System.out.println(this.email +"est connecté");
+            return true;
+        }
+        System.out.println("Erreur : Email ou mot de passe incorrect.");
+        return false;
+    }
+
+    public void seDeconnecter() {
+        this.estConnecte = false;
+        System.out.println("Vous êtes déconnecté");
+    }
+
+    public boolean changerMotDePasse(String ancienMotDePasse, String nouveauMotDePasse) {
+        if (this.motDePasse.equals(ancienMotDePasse)) {
+            this.motDePasse = nouveauMotDePasse;
+            System.out.println("Mot de passe mis à jour avec succès.");
+            return true;
+        }
+        System.out.println("Erreur : L'ancien mot de passe est incorrect.");
+        return false;
     }
 
     public boolean aUnEmailValide() {
@@ -59,12 +88,10 @@ public abstract class Utilisateur {
     public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
+
+
     @Override
     public String toString() {
         return "Utilisateur : " + prenomUtilisateur + " " + nomUtilisateur + " (" + email + ")";
-    }
-
-    public void regarder(Serie serie) {
-
     }
 }
